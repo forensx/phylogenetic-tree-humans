@@ -1,6 +1,8 @@
 [
     {
         "data": {
+            "id":"homo-sapiens", 
+            "label": "Homo sapiens",
             "Genus": "Homo",
             "Species": "Sapiens",
             "Mode of Movement - How do you know?": "Bipedal. The foramen magnum is located on the bottom of the cranium and in line with the dimension of the eye sockets. Given that a human spinal column runs perpendicular to the mandible, the placement of the foramen magnum forces bipedal movement.",
@@ -18,6 +20,8 @@
         }},
     {
         "data": {
+            "id":"homo-neanderthalensis",
+            "label": "Homo neanderthalensis",
             "Genus": "Homo",
             "Species": "Neanderthalensis",
             "Mode of Movement - How do you know?": "Bipedal. The foramen magnum is located on the bottom of the cranium and in line with the dimension of the eye sockets. Given that a human spinal column runs perpendicular to the mandible, the placement of the foramen magnum forces bipedal movement.",
@@ -35,6 +39,8 @@
         }
     }, {
         "data": {
+            "id":"homo-erectus",
+            "label": "Homo erectus",
             "Genus": "Homo",
             "Species": "Erectus",
             "Mode of Movement - How do you know?": "Bipedal. The foramen magnum is located on the bottom of the cranium and in line with the dimension of the eye sockets. Given that a human spinal column runs perpendicular to the mandible, the placement of the foramen magnum forces bipedal movement.",
@@ -52,6 +58,8 @@
         }
     }, {
         "data": {
+            "id":"homo-habillis",
+            "label": "Homo habillis",
             "Genus": "Homo",
             "Species": "Habillis",
             "Mode of Movement - How do you know?": "Bipedal. The foramen magnum is located on the bottom of the cranium and in line with the dimension of the eye sockets. Given that a human spinal column runs perpendicular to the mandible, the placement of the foramen magnum forces bipedal movement.",
@@ -69,6 +77,8 @@
         }
     }, {
         "data": {
+            "id":"australopticus-afarensis",
+            "label": "Australopticus afarensis",
             "Genus": "Australopticus",
             "Species": "afarensis",
             "Mode of Movement - How do you know?": "Bipedal. The foramen magnum is located on the bottom of the cranium and in line with the dimension of the eye sockets. Given that a human spinal column runs perpendicular to the mandible, the placement of the foramen magnum forces bipedal movement.",
@@ -86,6 +96,8 @@
         }
     }, {
         "data": {
+            "id":"pan-troglodyte",
+            "label": "Pan troglodyte",
             "Genus": "Pan",
             "Species": "troglodyte",
             "Mode of Movement - How do you know?": "Quadrupedal. The spinal column runs parallel to the ground, so the foramen magnum is placed more towards the back of the cranium and at an angle, allowing the eye sockets to face forward. Thus, the foramen magnum's location forces quadrupedal movement.",
@@ -103,6 +115,8 @@
         }
     }, {
         "data": {
+            "id":"gorilla-gorilla",
+            "label": "Gorilla gorilla",
             "Genus": "Gorilla",
             "Species": "gorilla",
             "Mode of Movement - How do you know?": "Quadrupedal. The spinal column runs parallel to the ground, so the foramen magnum is placed more towards the back of the cranium and at an angle, allowing the eye sockets to face forward. Thus, the foramen magnum's location forces quadrupedal movement.",

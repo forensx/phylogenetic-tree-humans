@@ -1,104 +1,140 @@
-import json
-
 import dash
 import dash_cytoscape as cyto
 import dash_html_components as html
-import dash_core_components as dcc
-from dash.dependencies import Input, Output
 
 app = dash.Dash(__name__)
 
-styles = {
-    'pre': {
-        'border': 'thin lightgrey solid',
-        'overflowX': 'scroll'
-    }
-}
-
-
-nodes = [
-    {
-        'data': {'id': short, 'label': label},
-        'position': {'x': 20*lat, 'y': -20*long}
-    }
-    for short, label, long, lat in (
-        ('la', 'Los Angeles', 34.03, -118.25),
-        ('nyc', 'New York', 40.71, -74),
-        ('to', 'Toronto', 43.65, -79.38),
-        ('mtl', 'Montreal', 45.50, -73.57),
-        ('van', 'Vancouver', 49.28, -123.12),
-        ('chi', 'Chicago', 41.88, -87.63),
-        ('bos', 'Boston', 42.36, -71.06),
-        ('hou', 'Houston', 29.76, -95.37)
-    )
-]
-
-edges = [
-    {'data': {'source': source, 'target': target}}
-    for source, target in (
-        ('van', 'la'),
-        ('la', 'chi'),
-        ('hou', 'chi'),
-        ('to', 'mtl'),
-        ('mtl', 'bos'),
-        ('nyc', 'bos'),
-        ('to', 'hou'),
-        ('to', 'nyc'),
-        ('la', 'nyc'),
-        ('nyc', 'bos')
-    )
-]
-
-
-default_stylesheet = [
-    {
-        'selector': 'node',
-        'style': {
-            'background-color': '#BFD7B5',
-            'label': 'data(label)'
-        }
-    }
-]
-
-
 app.layout = html.Div([
-        cyto.Cytoscape(
-            id='cytoscape-event-callbacks-2',
-            layout={'name': 'preset'},
-            elements=edges+nodes,
-            stylesheet=default_stylesheet,
-            style={'width': '100%', 'height': '450px'}
-        ),
-        html.P(id='cytoscape-tapNodeData-output'),
-        html.P(id='cytoscape-tapEdgeData-output'),
-        html.P(id='cytoscape-mouseoverNodeData-output'),
-        html.P(id='cytoscape-mouseoverEdgeData-output')
-    ])
+    cyto.Cytoscape(
+        id='cytoscape-two-nodes',
+        layout={'name': 'preset'},
+        style={'width': '100%', 'height': '400px'},
+        elements=[
+                    {
+                        "data": {
+                            "Genus": "Homo",
+                            "Species": "Sapiens",
+                            "Mode of Movement - How do you know?": "Bipedal. The foramen magnum is located on the bottom of the cranium and in line with the dimension of the eye sockets. Given that a human spinal column runs perpendicular to the mandible, the placement of the foramen magnum forces bipedal movement.",
+                            "Mode of Movement Source": "http://www.efossils.org/species/homo-sapiens",
+                            "Cranial Capacity (Cubic Centimeters)": "1350 cc",
+                            "Years ago they originated": "200,000",
+                            "Years ago they died": "Present",
+                            "Timeline Source": "http://humanorigins.si.edu/evidence/human-fossils/species/homo-sapiens",
+                            "Habitat": "Global",
+                            "Habitat Source": "http://www.efossils.org/species/homo-sapiens",
+                            "Geographical Origin": "Everywhere",
+                            "Geographical Origin Source": "http://www.efossils.org/species/homo-sapiens",
+                            "Fossils Found": "Still living",
+                            "Fossil Sources": ""
+                        }},
+                    {
+                        "data": {
+                            "Genus": "Homo",
+                            "Species": "Neanderthalensis",
+                            "Mode of Movement - How do you know?": "Bipedal. The foramen magnum is located on the bottom of the cranium and in line with the dimension of the eye sockets. Given that a human spinal column runs perpendicular to the mandible, the placement of the foramen magnum forces bipedal movement.",
+                            "Mode of Movement Source": "http://www.efossils.org/species/homo-neanderthalensis",
+                            "Cranial Capacity (Cubic Centimeters)": "1435 cc",
+                            "Years ago they originated": "400,000",
+                            "Years ago they died": "40,000",
+                            "Timeline Source": "http://humanorigins.si.edu/evidence/human-fossils/species/homo-neanderthalensis",
+                            "Habitat": "Similar to modern",
+                            "Habitat Source": "http://www.efossils.org/species/homo-neanderthalensis",
+                            "Geographical Origin": "Europe. Southwest to Central Asia.",
+                            "Geographical Origin Source": "http://www.efossils.org/species/homo-neanderthalensis",
+                            "Fossils Found": 300,
+                            "Fossil Sources": ""
+                        }
+                    }, {
+                        "data": {
+                            "Genus": "Homo",
+                            "Species": "Erectus",
+                            "Mode of Movement - How do you know?": "Bipedal. The foramen magnum is located on the bottom of the cranium and in line with the dimension of the eye sockets. Given that a human spinal column runs perpendicular to the mandible, the placement of the foramen magnum forces bipedal movement.",
+                            "Mode of Movement Source": "http://www.efossils.org/species/homo-erectus",
+                            "Cranial Capacity (Cubic Centimeters)": "850-1250 cc",
+                            "Years ago they originated": "1,890,000",
+                            "Years ago they died": "110,000",
+                            "Timeline Source": "http://humanorigins.si.edu/evidence/human-fossils/species/homo-erectus",
+                            "Habitat": "Tropical forest with grasslands, swamps/shallow lakes",
+                            "Habitat Source": "http://www.efossils.org/species/homo-erectus",
+                            "Geographical Origin": "Northern-Eastern-Southern Africa. Western Asia (Dmanisi, Republic of Georgia). East Asian (China and Indonesia)",
+                            "Geographical Origin Source": "http://www.efossils.org/species/homo-erectus",
+                            "Fossils Found": 45,
+                            "Fossil Sources": ""
+                        }
+                    }, {
+                        "data": {
+                            "Genus": "Homo",
+                            "Species": "Habillis",
+                            "Mode of Movement - How do you know?": "Bipedal. The foramen magnum is located on the bottom of the cranium and in line with the dimension of the eye sockets. Given that a human spinal column runs perpendicular to the mandible, the placement of the foramen magnum forces bipedal movement.",
+                            "Mode of Movement Source": "http://www.efossils.org/species/homo-habilis",
+                            "Cranial Capacity (Cubic Centimeters)": "612 cc",
+                            "Years ago they originated": "2,400,000",
+                            "Years ago they died": "1,400,000",
+                            "Timeline Source": "http://humanorigins.si.edu/evidence/human-fossils/species/homo-habillis",
+                            "Habitat": "Wet grasslands, savannahs with open woodlands",
+                            "Habitat Source": "http://www.efossils.org/species/homo-habilis",
+                            "Geographical Origin": "Eastern and Southern Africa",
+                            "Geographical Origin Source": "http://www.efossils.org/species/homo-habilis",
+                            "Fossils Found": 10,
+                            "Fossil Sources": "https://www.britannica.com/topic/Homo-habilis"
+                        }
+                    }, {
+                        "data": {
+                            "Genus": "Australopticus",
+                            "Species": "afarensis",
+                            "Mode of Movement - How do you know?": "Bipedal. The foramen magnum is located on the bottom of the cranium and in line with the dimension of the eye sockets. Given that a human spinal column runs perpendicular to the mandible, the placement of the foramen magnum forces bipedal movement.",
+                            "Mode of Movement Source": "http://efossils.org/species/australopithecus-afarensis",
+                            "Cranial Capacity (Cubic Centimeters)": "434 cc",
+                            "Years ago they originated": "3,850,000",
+                            "Years ago they died": "2,950,000",
+                            "Timeline Source": "http://humanorigins.si.edu/evidence/human-fossils/species/australopticus-afarensis",
+                            "Habitat": "Grasslands, woodlands",
+                            "Habitat Source": "http://efossils.org/species/australopithecus-afarensis",
+                            "Geographical Origin": "Eastern Africa (Ethiopia, Kenya, Tanzania)",
+                            "Geographical Origin Source": "http://efossils.org/species/australopithecus-afarensis",
+                            "Fossils Found": 300,
+                            "Fossil Sources": "http://www.columbia.edu/itc/anthropology/v1007/2002projects/web/australopithecus/austro.html"
+                        }
+                    }, {
+                        "data": {
+                            "Genus": "Pan",
+                            "Species": "troglodyte",
+                            "Mode of Movement - How do you know?": "Quadrupedal. The spinal column runs parallel to the ground, so the foramen magnum is placed more towards the back of the cranium and at an angle, allowing the eye sockets to face forward. Thus, the foramen magnum's location forces quadrupedal movement.",
+                            "Mode of Movement Source": "https://animaldiversity.org/accounts/Pan_troglodytes/",
+                            "Cranial Capacity (Cubic Centimeters)": "320-480cc",
+                            "Years ago they originated": "6,000,000",
+                            "Years ago they died": "Present",
+                            "Timeline Source": "http://tolweb.org/treehouses/?treehouse_id=4718",
+                            "Habitat": "Tropical rainforests. Forest-Savanna . https://animaldiversity.org/accounts/Pan_troglodytes/",
+                            "Habitat Source": "https://animaldiversity.org/accounts/Pan_troglodytes/",
+                            "Geographical Origin": "Central Africa",
+                            "Geographical Origin Source": "https://animaldiversity.org/accounts/Pan_troglodytes/",
+                            "Fossils Found": "Still living",
+                            "Fossil Sources": ""
+                        }
+                    }, {
+                        "data": {
+                            "Genus": "Gorilla",
+                            "Species": "gorilla",
+                            "Mode of Movement - How do you know?": "Quadrupedal. The spinal column runs parallel to the ground, so the foramen magnum is placed more towards the back of the cranium and at an angle, allowing the eye sockets to face forward. Thus, the foramen magnum's location forces quadrupedal movement.",
+                            "Mode of Movement Source": "http://www.talkorigins.org/faqs/homs/gorilla.html",
+                            "Cranial Capacity (Cubic Centimeters)": "500 cc",
+                            "Years ago they originated": "6,000,000",
+                            "Years ago they died": "Present",
+                            "Timeline Source": "http://tolweb.org/treehouses/?treehouse_id=4718",
+                            "Habitat": "Tropical Rainforests. https://www.livescience.com/27337-gorilla-facts.html",
+                            "Habitat Source": "http://www.talkorigins.org/faqs/homs/gorilla.html",
+                            "Geographical Origin": "Africa. https://www.livescience.com/27337-gorilla-facts.html",
+                            "Geographical Origin Source": "http://www.talkorigins.org/faqs/homs/gorilla.html",
+                            "Fossils Found": "Still living",
+                            "Fossil Sources": ""
+                        }
+                    }   
 
-
-@app.callback(Output('cytoscape-tapNodeData-output', 'children'),
-                [Input('cytoscape-event-callbacks-2', 'tapNodeData')])
-
-@app.callback(Output('cytoscape-tapEdgeData-output', 'children'),
-                [Input('cytoscape-event-callbacks-2', 'tapEdgeData')])
-def displayTapEdgeData(data):
-    if data:
-        return "You recently clicked/tapped the edge between " + data['source'].upper() + " and " + data['target'].upper()
-
-
-@app.callback(Output('cytoscape-mouseoverNodeData-output', 'children'),
-                [Input('cytoscape-event-callbacks-2', 'mouseoverNodeData')])
-def displayTapNodeData(data):
-    if data:
-        return "You recently hovered over the city: " + data['label']
-
-
-@app.callback(Output('cytoscape-mouseoverEdgeData-output', 'children'),
-                [Input('cytoscape-event-callbacks-2', 'mouseoverEdgeData')])
-def displayTapEdgeData(data):
-    if data:
-        return "You recently hovered over the edge between " + data['source'].upper() + " and " + data['target'].upper()
-
+            {'data': {'source': 'one', 'target': 'two'}}
+        ]
+    )
+])
 
 if __name__ == '__main__':
     app.run_server(debug=True)
