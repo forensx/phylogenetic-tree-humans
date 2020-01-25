@@ -2,58 +2,35 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_cytoscape as cyto
+
+import json
+filename = "phylo_network.json"
+with open(filename, 'r') as filename:
+    data = json.load(filename)
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app.title = "ForensX Phylogenetic Tree"
+
+print(data)
 
 app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),
-
-    html.Div(children='''
-        Dash: A web application framework for Python.
-    '''),
-
-    dcc.Graph(
-        id='example-graph',
-        figure={
-            'data': [
-                {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
-                {'x': [1, 2, 3], 'y': [2, 4, 5],
-                    'type': 'bar', 'name': u'Montréal'},
-            ],
-            'layout': {
-                'title': 'Dash Data Visualization'
-            }
-        }
-    )
+    html.Div([
+        cyto.Cytoscape(
+            id='human-phylogenetic-tree',
+            elements=data,
+            layout={'name': 'preset'},
+            style = {'height': '100vh',
+        'width': '100vw', 'padding': '0',
+        'margin': '0'}
+        )
+    ], style = {
+        'padding': '0',
+        'margin': '0'
+    })
 ])  # -*- coding: utf-8 -*-
-
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
-app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),
-
-    html.Div(children='''
-        Dash: A web application framework for Python.
-    '''),
-
-    dcc.Graph(
-        id='example-graph',
-        figure={
-            'data': [
-                {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
-                {'x': [1, 2, 3], 'y': [2, 4, 5],
-                    'type': 'bar', 'name': u'Montréal'},
-            ],
-            'layout': {
-                'title': 'Dash Data Visualization'
-            }
-        }
-    )
-])
 
 if __name__ == '__main__':
     app.run_server(debug=True)

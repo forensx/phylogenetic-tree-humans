@@ -1,0 +1,85 @@
+[{
+    "data": {
+      "id": "Homo Sapiens",
+      "label": "Homo Sapiens"
+    },
+    "position": {
+      "x": 50,
+      "y": 50
+    },
+    "locked": true
+  },
+  {
+    "data": {
+      "id": "Homo Neanderthalensis",
+      "label": "Homo Neanderthalensis"
+    },
+    "position": {
+      "x": 50,
+      "y": 50
+    },
+    "locked": true
+  },
+  {
+    "data": {
+      "id": "Homo Erectus",
+      "label": "Homo Erectus"
+    },
+    "position": {
+      "x": 50,
+      "y": 50
+    },
+    "locked": true
+  },
+  {
+    "data": {
+      "id": "Homo Habillis",
+      "label": "Homo Habillis"
+    },
+    "position": {
+      "x": 50,
+      "y": 50
+    },
+    "locked": true
+  },
+  {
+    "data": {
+      "id": "Australopticus afarensis",
+      "label": "Australopticus afarensis"
+    },
+    "position": {
+      "x": 50,
+      "y": 50
+    },
+    "locked": true
+  },
+  {
+    "data": {
+      "id": "Pan troglodyte",
+      "label": "Pan troglodyte"
+    },
+    "position": {
+      "x": 50,
+      "y": 50
+    },
+    "locked": true
+  },
+  {
+    "data": {
+      "id": "Gorilla gorilla",
+      "label": "Gorilla gorilla"
+    },
+    "position": {
+      "x": 50,
+      "y": 50
+    },
+    "locked": true
+  },
+  {
+    "data": {
+      "source": "Homo Sapiens",
+      "target": "Homo Neanderthalensis",
+      "label": "Node 1 to 2"
+    }
+  }
+]
