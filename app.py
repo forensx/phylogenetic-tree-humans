@@ -60,20 +60,38 @@ default_stylesheet = [
 
 app.layout = html.Div([
     cyto.Cytoscape(
-        id='cytoscape-event-callbacks-1',
+        id='cytoscape-event-callbacks-2',
         layout={'name': 'preset'},
         elements=edges+nodes,
         stylesheet=default_stylesheet,
-        style={'width': '100%', 'height': '450px'}
+        style={'width': '100%', 'height': '900px'}
     ),
-    html.Pre(id='cytoscape-tapNodeData-json', style=styles['pre'])
+    html.P(id='cytoscape-tapNodeData-output'),
+    html.P(id='cytoscape-tapEdgeData-output'),
+    html.P(id='cytoscape-mouseoverNodeData-output'),
+    html.P(id='cytoscape-mouseoverEdgeData-output')
 ])
 
 
-@app.callback(Output('cytoscape-tapNodeData-json', 'children'),
-              [Input('cytoscape-event-callbacks-1', 'tapNodeData')])
+@app.callback(Output('cytoscape-tapNodeData-output', 'children'),
+                [Input('cytoscape-event-callbacks-2', 'tapNodeData')])
 def displayTapNodeData(data):
-    return json.dumps(data, indent=2)
+    if data:
+        genusName = "Scientific Name: " + data['label']
+        mode = "Mode of Transportation: " + data['mode']
+        cranial = "Cranial Capacity: " + data['cranialCapacity']
+        origin = "Origin: " + data['origin']
+        dead = "Extinction date: " + data['dead']
+        habitat = "Habitat: " + data['habitat']
+        geography = "Geography: " + data['geography']
+        fossil = "Fossil Count: " + str(data['fossil'])
+        return genusName, mode, cranial, origin, dead, habitat, geography, fossil
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
