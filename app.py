@@ -1,36 +1,216 @@
-# -*- coding: utf-8 -*-
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
 import dash_cytoscape as cyto
+import dash_html_components as html
+import dash_core_components as dcc
+from dash.dependencies import Input, Output
+import pandas as pd
 
-import json
-filename = "phylo_network.json"
-with open(filename, 'r') as filename:
-    data = json.load(filename)
+external_stylesheets = [
+    'https://codepen.io/chriddyp/pen/bWLwgP.css'
+]
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+color_scheme = {
+    'dark-green': '#40514e',
+    'blue': '#2f89fc',
+    'green': '#30e3ca',
+    'white': '#f5f5f5'
+}
+
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-app.title = "ForensX Phylogenetic Tree"
+app.title = "Human Origins: Phylogeny"
+app.css.config.serve_locally = False
 
-print(data)
+
+evolution = pd.read_csv("Evolution.csv")
+
+styles = {
+    'pre': {
+        'border': 'thin lightgrey solid',
+        'overflowX': 'scroll'
+    }
+}
+
+nodes = [
+    {
+        'data': {'id': commonName, 'label': label, 'mode': mode, 'cranialCapacity': cranialCapacity, 'origin': origin, 'dead': dead, 'habitat': habitat, 'geography': geography, 'fossil': fossil},
+        'position': {'x': 20*lat, 'y': -20*long}
+    }
+    for commonName, label, mode, cranialCapacity, origin, dead, habitat, geography, fossil, lat, long in (
+        ('ancestor', 'Common Ancestor', '?', '?', '?', '?', '?', '?', '?', 29, -75),
+        ('human', evolution['Genus'][0] + " " + evolution['Species'][0], evolution['Movement'][0], evolution['Cranial Capacity'][0], evolution['Origin']
+         [0], evolution['Dead'][0], evolution['Habitat'][0], evolution['Geographical Origin'][0], evolution['Fossils'][0], 34.03, -118.25),
+        ('neand', evolution['Genus'][1] + " " + evolution['Species'][1], evolution['Movement'][1], evolution['Cranial Capacity'][1], evolution['Origin']
+         [1], evolution['Dead'][1], evolution['Habitat'][1], evolution['Geographical Origin'][1], evolution['Fossils'][1],  40.71, -74),
+        ('erect', evolution['Genus'][2] + " " + evolution['Species'][2], evolution['Movement'][2], evolution['Cranial Capacity'][2], evolution['Origin']
+         [2], evolution['Dead'][2], evolution['Habitat'][2], evolution['Geographical Origin'][2], evolution['Fossils'][2], 43.65, -79.38),
+        ('habillis', evolution['Genus'][3] + " " + evolution['Species'][3], evolution['Movement'][3], evolution['Cranial Capacity'][3], evolution['Origin']
+         [3], evolution['Dead'][3], evolution['Habitat'][3], evolution['Geographical Origin'][3], evolution['Fossils'][3], 45.50, -73.57),
+        ('afarensis', evolution['Genus'][4] + " " + evolution['Species'][4], evolution['Movement'][4], evolution['Cranial Capacity'][4], evolution['Origin']
+         [4], evolution['Dead'][4], evolution['Habitat'][4], evolution['Geographical Origin'][4], evolution['Fossils'][4], 49.28, -123.12),
+        ('pan', evolution['Genus'][5] + " " + evolution['Species'][5], evolution['Movement'][5], evolution['Cranial Capacity'][5], evolution['Origin']
+         [5], evolution['Dead'][5], evolution['Habitat'][5], evolution['Geographical Origin'][5], evolution['Fossils'][5], 41.88, -87.63),
+        ('gorilla', evolution['Genus'][6] + " " + evolution['Species'][6], evolution['Movement'][6], evolution['Cranial Capacity'][6], evolution['Origin']
+         [6], evolution['Dead'][6], evolution['Habitat'][6], evolution['Geographical Origin'][6], evolution['Fossils'][6], 42.36, -71.06)
+    )
+]
+
+edges = [
+    {'data': {'source': source, 'target': target}}
+    for source, target in (
+        ('human', 'neand'),
+        ('neand', 'chi'),
+        ('hou', 'erect'),
+        ('erect', 'habillis'),
+        ('habillis', 'afarensis'),
+        ('afarensis', 'pan'),
+        ('gorilla', 'human'),
+
+    )
+]
+
+
+default_stylesheet = [
+    {
+        'selector': 'node',
+        'style': {
+            'background-color': '#BFD7B5',
+            'label': 'data(label)'
+        }
+    }
+]
+
 
 app.layout = html.Div(children=[
-    html.Div([
-        cyto.Cytoscape(
-            id='human-phylogenetic-tree',
-            elements=data,
-            layout={'name': 'preset'},
-            style = {'height': '100vh',
-        'width': '100vw', 'padding': '0',
-        'margin': '0'}
-        )
-    ], style = {
-        'padding': '0',
-        'margin': '0'
+    html.Div([  # START FLEX CONTAINER
+        # START LEFT HALF
+        html.Div([
+            cyto.Cytoscape(
+                id='cytoscape-event-callbacks-2',
+                layout={'name': 'preset'},
+                elements=edges+nodes,
+                stylesheet=default_stylesheet,
+                autoungrabify=True,
+                autolock=True,
+                maxZoom=1.5,
+                minZoom=0.8,
+                style={'width': '100%', 'height': '100%'}
+            )
+        ], style={'margin': '0px',
+                  'padding': '0px',
+                  'grid-area': '1 / 1 / 2 / 3',
+                  'box-shadow': '0px 4px 8px rgba(0, 0, 0, 0.25)'}),
+        # START RIGHT HALF
+        html.Div([
+            html.Div([
+                html.Div(id='cytoscape-tapNodeGenus-output',
+                         style={
+                             'font-size': '2em',
+                             'font-weight': 'bold'
+                         }),
+                html.Div(id='cytoscape-tapNodeMode-output',
+                         style={
+                             'font-size': '1.2em',
+                             'margin-top': '8%'
+                         }),
+                html.Div("Hello world Justification here please thank you lol.", id='PUTJUSTIFICATIONHERE',
+                         style={
+                             'font-size': '1em',
+                             'margin-top': '5%',
+                             'text-align': 'justify'
+                         }),
+                html.Div(id='cytoscape-tapNodeCranial-output',
+                         style={
+                             'font-size': '1.2em',
+                             'margin-top': '8%'
+                         }),
+                html.Div(id='cytoscape-tapNodeOrigin-output',
+                         style={
+                             'font-size': '1.2em',
+                             'margin-top': '8%'
+                         }),
+                html.Div(id='cytoscape-tapNodeDead-output',
+                         style={
+                             'font-size': '1.2em',
+                             'margin-top': '8%'
+                         }),
+                html.Div(id='cytoscape-tapNodeHabitat-output',
+                         style={
+                             'font-size': '1.2em',
+                             'margin-top': '8%'
+                         }),
+                html.Div(id='cytoscape-tapNodeGeography-output',
+                         style={
+                             'font-size': '1.2em',
+                             'margin-top': '8%'
+                         }),
+                html.Div(id='cytoscape-tapNodeFossil-output',
+                         style={
+                             'font-size': '1.2em',
+                             'margin-top': '8%',
+                         })
+            ], style={
+                'padding': '50px',
+            })
+        ], style={
+            'margin': '0px',
+            'padding': '0px',
+            'grid-area': '1 / 3 / 2 / 4',
+            'box-shadow': '0px 4px 8px rgba(0, 0, 0, 0.25)'
+        })
+    ], style={
+        'display': 'grid',
+        'grid-template-columns': 'repeat(3, 1fr)',
+        'grid-template-rows': '1fr',
+        'grid-column-gap': '35px',
+        'grid-row-gap': '0px',
+        'width': '90vw',
+        'height': '95vh',
+        'margin': 'auto',
+        'padding': '0px',
+        'paddingTop': '14px',
+        'justify-content': 'center'
     })
-])  # -*- coding: utf-8 -*-
+], style={
+    'margin': '0px',
+    'padding': '0px'
+})
+
+# 6D7E7B
+# color_scheme['dark-green']
+
+
+@app.callback([Output('cytoscape-tapNodeGenus-output', 'children'),
+               Output('cytoscape-tapNodeMode-output', 'children'),
+               Output('cytoscape-tapNodeCranial-output', 'children'),
+               Output('cytoscape-tapNodeOrigin-output', 'children'),
+               Output('cytoscape-tapNodeDead-output', 'children'),
+               Output('cytoscape-tapNodeHabitat-output', 'children'),
+               Output('cytoscape-tapNodeGeography-output', 'children'),
+               Output('cytoscape-tapNodeFossil-output', 'children')],
+              [Input('cytoscape-event-callbacks-2', 'tapNodeData')])
+def displayTapNodeData(data):
+    if data:
+        genusName = data['label']
+        mode = "Mode of Transportation: " + data['mode']
+        cranial = "Cranial Capacity: " + data['cranialCapacity']
+        origin = "Origin: " + data['origin']
+        dead = "Extinction date: " + data['dead']
+        habitat = "Habitat: " + data['habitat']
+        geography = "Geography: " + data['geography']
+        fossil = "Fossil Count: " + str(data['fossil'])
+        return genusName, mode, cranial, origin, dead, habitat, geography, fossil
+    else:
+        genusName = "Click on a node to learn more about it!"
+        mode = ""
+        cranial = ""
+        origin = ""
+        dead = ""
+        habitat = ""
+        geography = ""
+        fossil = ""
+        return genusName, mode, cranial, origin, dead, habitat, geography, fossil
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
