@@ -10,9 +10,9 @@ external_stylesheets = [
 ]
 
 color_scheme = {
-    'dark-green': '#40514e',
-    'blue': '#2f89fc',
-    'green': '#30e3ca',
+    'background-color': '#40514e',
+    'edges-color': '#2f89fc',
+    'node-color': '#30e3ca',
     'white': '#f5f5f5'
 }
 
@@ -173,7 +173,10 @@ app.layout = html.Div(children=[
     })
 ], style={
     'margin': '0px',
-    'padding': '0px'
+    'padding': '0px',
+    'height': '100vh',
+    'width': '100vw',
+    'backgroundColor': color_scheme['background-color']
 })
 
 # 6D7E7B
