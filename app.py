@@ -40,23 +40,24 @@ nodes = [
     for commonName, label, mode, justification, cranialCapacity, origin, dead, habitat, geography, fossil, size, lat, long in (
         ('ancestor', 'Common Ancestor', '?', '?', '?', '?', '?', '?', '?', '?', 50, 3, -30),
         ('human', evolution['Genus'][0] + " " + evolution['Species'][0], evolution['Movement'][0], evolution['Justification'][0], evolution['Cranial Capacity'][0], evolution['Origin']
-         [0], evolution['Dead'][0], evolution['Habitat'][0], evolution['Geographical Origin'][0], evolution['Fossils'][0], 50, 53, 20),
+         [0], evolution['Dead'][0], evolution['Habitat'][0], evolution['Geographical Origin'][0], evolution['Fossils'][0], 50, 63, 30),
         ('neand', evolution['Genus'][1] + " " + evolution['Species'][1], evolution['Movement'][1], evolution['Justification'][1], evolution['Cranial Capacity'][1], evolution['Origin']
-         [1], evolution['Dead'][1], evolution['Habitat'][1], evolution['Geographical Origin'][1], evolution['Fossils'][1], 50,  48, 5),
+         [1], evolution['Dead'][1], evolution['Habitat'][1], evolution['Geographical Origin'][1], evolution['Fossils'][1], 50,  58, 15),
         ('erect', evolution['Genus'][2] + " " + evolution['Species'][2], evolution['Movement'][2], evolution['Justification'][2], evolution['Cranial Capacity'][2], evolution['Origin']
-         [2], evolution['Dead'][2], evolution['Habitat'][2], evolution['Geographical Origin'][2], evolution['Fossils'][2], 50, 38, -5),
+         [2], evolution['Dead'][2], evolution['Habitat'][2], evolution['Geographical Origin'][2], evolution['Fossils'][2], 50, 48, 5),
         ('habillis', evolution['Genus'][3] + " " + evolution['Species'][3], evolution['Movement'][3], evolution['Justification'][3], evolution['Cranial Capacity'][3], evolution['Origin']
-         [3], evolution['Dead'][3], evolution['Habitat'][3], evolution['Geographical Origin'][3], evolution['Fossils'][3], 50, 28, -15),
+         [3], evolution['Dead'][3], evolution['Habitat'][3], evolution['Geographical Origin'][3], evolution['Fossils'][3], 50, 38, -5),
         ('afarensis', evolution['Genus'][4] + " " + evolution['Species'][4], evolution['Movement'][4], evolution['Justification'][4], evolution['Cranial Capacity'][4], evolution['Origin']
-         [4], evolution['Dead'][4], evolution['Habitat'][4], evolution['Geographical Origin'][4], evolution['Fossils'][4], 50, 18, -25),
+         [4], evolution['Dead'][4], evolution['Habitat'][4], evolution['Geographical Origin'][4], evolution['Fossils'][4], 50, 28, -15),
         ('pan', evolution['Genus'][5] + " " + evolution['Species'][5], evolution['Movement'][5], evolution['Justification'][5], evolution['Cranial Capacity'][5], evolution['Origin']
-         [5], evolution['Dead'][5], evolution['Habitat'][5], evolution['Geographical Origin'][5], evolution['Fossils'][5], 50, 43, -60),
+         [5], evolution['Dead'][5], evolution['Habitat'][5], evolution['Geographical Origin'][5], evolution['Fossils'][5], 50, 63, -70),
         ('gorilla', evolution['Genus'][6] + " " + evolution['Species'][6], evolution['Movement'][6], evolution['Justification'][6], evolution['Cranial Capacity'][6], evolution['Origin']
-         [6], evolution['Dead'][6], evolution['Habitat'][6], evolution['Geographical Origin'][6], evolution['Fossils'][6], 50, 53, -80),
-        ('invisTop1', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 13, -20),
+         [6], evolution['Dead'][6], evolution['Habitat'][6], evolution['Geographical Origin'][6], evolution['Fossils'][6], 50, 63, -90),
+        ('invisTop1', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 13, -20),        
         ('invisTop2', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 23, -10),
         ('invisTop3', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 33, 0),
         ('invisTop4', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 43, 10),
+        ('invisTop5', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 53, 20),
         ('invisBot1', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 38, -65)
     )
 ]
@@ -68,13 +69,14 @@ edges = [
         ('invisTop1', 'invisTop2'),
         ('invisTop2', 'invisTop3'),
         ('invisTop3', 'invisTop4'),
+        ('invisTop4', 'invisTop5'),
         ('ancestor', 'invisBot1'),
-        ('invisTop1', 'afarensis'),
-        ('invisTop2', 'habillis'),
-        ('invisTop3', 'erect'),
-        ('invisTop4', 'neand'),
-        ('invisTop4', 'human'),
-        ('invisBot1', 'pan'),
+        ('invisTop2', 'afarensis'),
+        ('invisTop3', 'habillis'),
+        ('invisTop4', 'erect'),
+        ('invisTop5', 'neand'),
+        ('invisTop5', 'human'),
+        ('invisTop1', 'pan'),
         ('invisBot1', 'gorilla')
 
     )
