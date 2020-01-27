@@ -11,7 +11,7 @@ external_stylesheets = [
 
 color_scheme = {
     'background-color': '#161616',  # set this in assets/style.css as well
-    'edges-color': '#689775',
+    'edge-color': '#689775',
     'node-color': '#C7493A',
     'header-color': '#A33327',
     'sidebar-text-color': '#FFFFFF'
@@ -64,7 +64,7 @@ nodes = [
          '?', '?', '?', '?', '?', '?', 32, -47),
         ('invis5', '', '?', '?',
          '?', '?', '?', '?', '?', '?', 8, -26)
-         
+
     )
 ]
 
@@ -89,7 +89,13 @@ default_stylesheet = [
         'style': {
             'background-color': color_scheme['node-color'],
             'label': 'data(label)',
-            'line-color': color_scheme['edges-color']
+            'color': 'white'
+        }
+    },
+    {
+        'selector': 'edge',
+        'style': {
+            'line-color': color_scheme['edge-color']
         }
     }
 ]
@@ -106,15 +112,17 @@ app.layout = html.Div(children=[
                 stylesheet=default_stylesheet,
                 autoungrabify=True,
                 autolock=True,
-                maxZoom=1.5,
-                minZoom=0.8,
+                maxZoom=1.5, 
+                minZoom=1.0,
+                zoomingEnabled=True,
+                userZoomingEnabled=True,
                 style={'width': '100%', 'height': '100%'}
             )
         ], style={'margin': '0px',
                   'padding': '0px',
                   'grid-area': '1 / 1 / 2 / 3',
                   'box-shadow': '0px 4px 8px rgba(0, 0, 0, 0.25)',
-                  'background':'#2D2C2C'
+                  'background': '#2D2C2C'
                   }),
         # START RIGHT HALF
         html.Div([
@@ -182,7 +190,7 @@ app.layout = html.Div(children=[
             'padding': '0px',
             'grid-area': '1 / 3 / 2 / 4',
             'box-shadow': '0px 4px 8px rgba(0, 0, 0, 0.25)',
-            'background':'#2D2C2C'
+            'background': '#2D2C2C'
         })
     ], style={
         'display': 'grid',
@@ -196,16 +204,9 @@ app.layout = html.Div(children=[
         'padding': '0px',
         'paddingTop': '20px',
         'justify-content': 'center',
-        
-    })
-], style={
-    # 'margin': '0px',
-    # 'padding': '0px',
-    # 'backgroundColor': color_scheme['background-color'], #Background set in assets/style.css
-})
 
-# 6D7E7B
-# color_scheme['dark-green']
+    })
+])
 
 
 @app.callback([Output('cytoscape-tapNodeGenus-output', 'children'),
