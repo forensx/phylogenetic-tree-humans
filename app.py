@@ -126,8 +126,8 @@ app.layout = html.Div(children=[
                 stylesheet=default_stylesheet,
                 autoungrabify=True,
                 autolock=True,
-                #maxZoom=1.5, 
-                #minZoom=1.0,
+                maxZoom=2.0, 
+                minZoom=0.46,
                 zoomingEnabled=True,
                 userZoomingEnabled=True,
                 style={'width': '100%', 'height': '100%'}
