@@ -34,50 +34,48 @@ styles = {
 
 nodes = [
     {
-        'data': {'id': commonName, 'label': label, 'mode': mode, 'justification': justification, 'cranialCapacity': cranialCapacity, 'origin': origin, 'dead': dead, 'habitat': habitat, 'geography': geography, 'fossil': fossil},
-        'position': {'x': 20*lat, 'y': -20*long}
+        'data': {'id': commonName, 'label': label, 'mode': mode, 'justification': justification, 'cranialCapacity': cranialCapacity, 'origin': origin, 'dead': dead, 'habitat': habitat, 'geography': geography, 'fossil': fossil, 'size': size },
+        'position': {'x': 15*lat, 'y': -15*long}
     }
-    for commonName, label, mode, justification, cranialCapacity, origin, dead, habitat, geography, fossil, lat, long in (
-        ('ancestor', 'Common Ancestor', '?', '?',
-         '?', '?', '?', '?', '?', '?', 3, -30),
+    for commonName, label, mode, justification, cranialCapacity, origin, dead, habitat, geography, fossil, size, lat, long in (
+        ('ancestor', 'Common Ancestor', '?', '?', '?', '?', '?', '?', '?', '?', 50, 3, -30),
         ('human', evolution['Genus'][0] + " " + evolution['Species'][0], evolution['Movement'][0], evolution['Justification'][0], evolution['Cranial Capacity'][0], evolution['Origin']
-         [0], evolution['Dead'][0], evolution['Habitat'][0], evolution['Geographical Origin'][0], evolution['Fossils'][0], 32, -4),
+         [0], evolution['Dead'][0], evolution['Habitat'][0], evolution['Geographical Origin'][0], evolution['Fossils'][0], 50, 53, 20),
         ('neand', evolution['Genus'][1] + " " + evolution['Species'][1], evolution['Movement'][1], evolution['Justification'][1], evolution['Cranial Capacity'][1], evolution['Origin']
-         [1], evolution['Dead'][1], evolution['Habitat'][1], evolution['Geographical Origin'][1], evolution['Fossils'][1],  34, -14),
+         [1], evolution['Dead'][1], evolution['Habitat'][1], evolution['Geographical Origin'][1], evolution['Fossils'][1], 50,  48, 5),
         ('erect', evolution['Genus'][2] + " " + evolution['Species'][2], evolution['Movement'][2], evolution['Justification'][2], evolution['Cranial Capacity'][2], evolution['Origin']
-         [2], evolution['Dead'][2], evolution['Habitat'][2], evolution['Geographical Origin'][2], evolution['Fossils'][2], 26, -20),
+         [2], evolution['Dead'][2], evolution['Habitat'][2], evolution['Geographical Origin'][2], evolution['Fossils'][2], 50, 38, -5),
         ('habillis', evolution['Genus'][3] + " " + evolution['Species'][3], evolution['Movement'][3], evolution['Justification'][3], evolution['Cranial Capacity'][3], evolution['Origin']
-         [3], evolution['Dead'][3], evolution['Habitat'][3], evolution['Geographical Origin'][3], evolution['Fossils'][3], 21, -23),
+         [3], evolution['Dead'][3], evolution['Habitat'][3], evolution['Geographical Origin'][3], evolution['Fossils'][3], 50, 28, -15),
         ('afarensis', evolution['Genus'][4] + " " + evolution['Species'][4], evolution['Movement'][4], evolution['Justification'][4], evolution['Cranial Capacity'][4], evolution['Origin']
-         [4], evolution['Dead'][4], evolution['Habitat'][4], evolution['Geographical Origin'][4], evolution['Fossils'][4], 16, -30),
+         [4], evolution['Dead'][4], evolution['Habitat'][4], evolution['Geographical Origin'][4], evolution['Fossils'][4], 50, 18, -25),
         ('pan', evolution['Genus'][5] + " " + evolution['Species'][5], evolution['Movement'][5], evolution['Justification'][5], evolution['Cranial Capacity'][5], evolution['Origin']
-         [5], evolution['Dead'][5], evolution['Habitat'][5], evolution['Geographical Origin'][5], evolution['Fossils'][5], 34, -41),
+         [5], evolution['Dead'][5], evolution['Habitat'][5], evolution['Geographical Origin'][5], evolution['Fossils'][5], 50, 43, -60),
         ('gorilla', evolution['Genus'][6] + " " + evolution['Species'][6], evolution['Movement'][6], evolution['Justification'][6], evolution['Cranial Capacity'][6], evolution['Origin']
-         [6], evolution['Dead'][6], evolution['Habitat'][6], evolution['Geographical Origin'][6], evolution['Fossils'][6], 40, -53),
-        ('invis1', '', '?', '?',
-         '?', '?', '?', '?', '?', '?', 15, -20),
-        ('invis2', '', '?', '?',
-         '?', '?', '?', '?', '?', '?', 18, -16),
-        ('invis3', '', '?', '?',
-         '?', '?', '?', '?', '?', '?', 26, -9),
-        ('invis4', '', '?', '?',
-         '?', '?', '?', '?', '?', '?', 32, -47),
-        ('invis5', '', '?', '?',
-         '?', '?', '?', '?', '?', '?', 8, -26)
-
+         [6], evolution['Dead'][6], evolution['Habitat'][6], evolution['Geographical Origin'][6], evolution['Fossils'][6], 50, 53, -80),
+        ('invisTop1', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 13, -20),
+        ('invisTop2', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 23, -10),
+        ('invisTop3', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 33, 0),
+        ('invisTop4', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 43, 10),
+        ('invisBot1', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 38, -65)
     )
 ]
 
 edges = [
     {'data': {'source': source, 'target': target}}
     for source, target in (
-        ('human', 'neand'),
-        ('neand', 'chi'),
-        ('hou', 'erect'),
-        ('erect', 'habillis'),
-        ('habillis', 'afarensis'),
-        ('afarensis', 'pan'),
-        ('gorilla', 'human'),
+        ('ancestor', 'invisTop1'),
+        ('invisTop1', 'invisTop2'),
+        ('invisTop2', 'invisTop3'),
+        ('invisTop3', 'invisTop4'),
+        ('ancestor', 'invisBot1'),
+        ('invisTop1', 'afarensis'),
+        ('invisTop2', 'habillis'),
+        ('invisTop3', 'erect'),
+        ('invisTop4', 'neand'),
+        ('invisTop4', 'human'),
+        ('invisBot1', 'pan'),
+        ('invisBot1', 'gorilla')
 
     )
 ]
@@ -89,13 +87,19 @@ default_stylesheet = [
         'style': {
             'background-color': color_scheme['node-color'],
             'label': 'data(label)',
-            'color': 'white'
+            'color': 'white',
+            'width': 'data(size)',
+            'height': 'data(size)',
+            'font-size': '24',
+            "text-valign": "center",
+            "text-halign": "right"
         }
     },
     {
         'selector': 'edge',
         'style': {
-            'line-color': color_scheme['edge-color']
+            'line-color': color_scheme['edge-color'],
+            'width': '10'
         }
     }
 ]
@@ -112,8 +116,8 @@ app.layout = html.Div(children=[
                 stylesheet=default_stylesheet,
                 autoungrabify=True,
                 autolock=True,
-                maxZoom=1.5, 
-                minZoom=1.0,
+                #maxZoom=1.5, 
+                #minZoom=1.0,
                 zoomingEnabled=True,
                 userZoomingEnabled=True,
                 style={'width': '100%', 'height': '100%'}
