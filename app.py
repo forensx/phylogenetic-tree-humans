@@ -55,6 +55,10 @@ nodes = [
          [5], evolution['Dead'][5], evolution['Habitat'][5], evolution['Geographical Origin'][5], evolution['Fossils'][5], 50, 63, -70, "extanct"),
         ('gorilla', evolution['Genus'][6] + " " + evolution['Species'][6], evolution['Movement'][6], evolution['Justification'][6], evolution['Cranial Capacity'][6], evolution['Origin']
          [6], evolution['Dead'][6], evolution['Habitat'][6], evolution['Geographical Origin'][6], evolution['Fossils'][6], 50, 63, -90, "extanct"),
+        ('Ardipith', evolution['Genus'][7] + " " + evolution['Species'][7], evolution['Movement'][7], evolution['Justification'][7], evolution['Cranial Capacity'][7], evolution['Origin']
+         [7], evolution['Dead'][7], evolution['Habitat'][7], evolution['Geographical Origin'][7], evolution['Fossils'][7], 50, 70, -90, "extanct"),
+        ('Panthrop', evolution['Genus'][8] + " " + evolution['Species'][8], evolution['Movement'][8], evolution['Justification'][8], evolution['Cranial Capacity'][8], evolution['Origin']
+         [8], evolution['Dead'][8], evolution['Habitat'][8], evolution['Geographical Origin'][8], evolution['Fossils'][8], 50, 80, -90, "extanct"),
         ('invisTop1', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 13, -20, "extinct"),        
         ('invisTop2', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 23, -10, "extinct"),
         ('invisTop3', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 33, 0, "extinct"),
