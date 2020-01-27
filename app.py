@@ -194,7 +194,7 @@ app.layout = html.Div(children=[
         'height': '95vh',
         'margin': 'auto',
         'padding': '0px',
-        'paddingTop': '14px',
+        'paddingTop': '20px',
         'justify-content': 'center',
         
     })
