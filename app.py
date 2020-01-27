@@ -22,6 +22,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.title = "Human Origins: Phylogeny"
 app.css.config.serve_locally = False
 
+server = app.server
 
 evolution = pd.read_csv("Evolution.csv")
 
