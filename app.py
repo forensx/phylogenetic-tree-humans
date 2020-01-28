@@ -75,6 +75,8 @@ nodes = [
          '?', '?', '?', 1, 63, 30, "extinct"),
         ('invisTop7', '', '?', '?', '?', '?', '?',
          '?', '?', '?', 1, 73, 40, "extinct"),
+        ('invisLeft', '', '?', '?', '?', '?', '?',
+         '?', '?', '?', 1, -50, -30, "extinct"),
         ('invisBot1', '', '?', '?', '?', '?', '?',
          '?', '?', '?', 1, 38, -65, "extinct")
     )
@@ -84,6 +86,7 @@ edges = [
     {'data': {'source': source, 'target': target}}
     for source, target in (
         ('ancestor', 'invisTop1'),
+        ('ancestor', 'invisLeft'),
         ('invisTop1', 'invisTop2'),
         ('invisTop2', 'invisTop3'),
         ('invisTop3', 'invisTop4'),
