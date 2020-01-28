@@ -54,9 +54,9 @@ nodes = [
         ('afarensis', evolution['Genus'][4] + " " + evolution['Species'][4], evolution['Movement'][4], evolution['Justification'][4], evolution['Cranial Capacity'][4], evolution['Origin']
          [4], evolution['Dead'][4], evolution['Habitat'][4], evolution['Geographical Origin'][4], evolution['Fossils'][4], 50, 38, -5, "extinct"),
         ('pan', evolution['Genus'][5] + " " + evolution['Species'][5], evolution['Movement'][5], evolution['Justification'][5], evolution['Cranial Capacity'][5], evolution['Origin']
-         [5], evolution['Dead'][5], evolution['Habitat'][5], evolution['Geographical Origin'][5], evolution['Fossils'][5], 50, 63, -70, "extanct"),
+         [5], evolution['Dead'][5], evolution['Habitat'][5], evolution['Geographical Origin'][5], evolution['Fossils'][5], 50, 83, -90, "extanct"),
         ('gorilla', evolution['Genus'][6] + " " + evolution['Species'][6], evolution['Movement'][6], evolution['Justification'][6], evolution['Cranial Capacity'][6], evolution['Origin']
-         [6], evolution['Dead'][6], evolution['Habitat'][6], evolution['Geographical Origin'][6], evolution['Fossils'][6], 50, 63, -90, "extanct"),
+         [6], evolution['Dead'][6], evolution['Habitat'][6], evolution['Geographical Origin'][6], evolution['Fossils'][6], 50, 83, -110, "extanct"),
         ('ardipith', evolution['Genus'][7] + " " + evolution['Species'][7], evolution['Movement'][7], evolution['Justification'][7], evolution['Cranial Capacity'][7], evolution['Origin']
          [7], evolution['Dead'][7], evolution['Habitat'][7], evolution['Geographical Origin'][7], evolution['Fossils'][7], 50, 28, -15, "extinct"),
         ('panthrop', evolution['Genus'][8] + " " + evolution['Species'][8], evolution['Movement'][8], evolution['Justification'][8], evolution['Cranial Capacity'][8], evolution['Origin']
