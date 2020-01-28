@@ -141,7 +141,7 @@ app.layout = html.Div(children=[
         html.Div([
             html.Div([
                 html.Div([
-                    'Human Origins'
+                    'Human Origins - A ForensX Application'
                 ], style={
                     'grid-area': '1 / 1 / 2 / 5',
                     'color': color_scheme['header-color'],
