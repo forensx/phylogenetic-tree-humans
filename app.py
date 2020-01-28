@@ -36,30 +36,37 @@ styles = {
 nodes = [
     {
         'data': {'id': commonName, 'label': label, 'mode': mode, 'justification': justification, 'cranialCapacity': cranialCapacity, 'origin': origin, 'dead': dead, 'habitat': habitat, 'geography': geography, 'fossil': fossil, 'size': size },
-        'position': {'x': 15*lat, 'y': -15*long}
+        'position': {'x': 15*lat, 'y': -15*long},
+        'classes': classes
     }
-    for commonName, label, mode, justification, cranialCapacity, origin, dead, habitat, geography, fossil, size, lat, long in (
-        ('ancestor', 'Common Ancestor', '?', '?', '?', '?', '?', '?', '?', '?', 50, 3, -30),
+    for commonName, label, mode, justification, cranialCapacity, origin, dead, habitat, geography, fossil, size, lat, long, classes in (
+        ('ancestor', 'Common Ancestor', '?', '?', '?', '?', '?', '?', '?', '?', 50, 3, -30, "extinct"),
         ('human', evolution['Genus'][0] + " " + evolution['Species'][0], evolution['Movement'][0], evolution['Justification'][0], evolution['Cranial Capacity'][0], evolution['Origin']
-         [0], evolution['Dead'][0], evolution['Habitat'][0], evolution['Geographical Origin'][0], evolution['Fossils'][0], 50, 63, 30),
+         [0], evolution['Dead'][0], evolution['Habitat'][0], evolution['Geographical Origin'][0], evolution['Fossils'][0], 50, 83, 50, "extanct"),
         ('neand', evolution['Genus'][1] + " " + evolution['Species'][1], evolution['Movement'][1], evolution['Justification'][1], evolution['Cranial Capacity'][1], evolution['Origin']
-         [1], evolution['Dead'][1], evolution['Habitat'][1], evolution['Geographical Origin'][1], evolution['Fossils'][1], 50,  58, 15),
+         [1], evolution['Dead'][1], evolution['Habitat'][1], evolution['Geographical Origin'][1], evolution['Fossils'][1], 50,  78, 35, "extinct"),
         ('erect', evolution['Genus'][2] + " " + evolution['Species'][2], evolution['Movement'][2], evolution['Justification'][2], evolution['Cranial Capacity'][2], evolution['Origin']
-         [2], evolution['Dead'][2], evolution['Habitat'][2], evolution['Geographical Origin'][2], evolution['Fossils'][2], 50, 48, 5),
+         [2], evolution['Dead'][2], evolution['Habitat'][2], evolution['Geographical Origin'][2], evolution['Fossils'][2], 50, 68, 25, "extinct"),
         ('habillis', evolution['Genus'][3] + " " + evolution['Species'][3], evolution['Movement'][3], evolution['Justification'][3], evolution['Cranial Capacity'][3], evolution['Origin']
-         [3], evolution['Dead'][3], evolution['Habitat'][3], evolution['Geographical Origin'][3], evolution['Fossils'][3], 50, 38, -5),
+         [3], evolution['Dead'][3], evolution['Habitat'][3], evolution['Geographical Origin'][3], evolution['Fossils'][3], 50, 58, 15, "extinct"),
         ('afarensis', evolution['Genus'][4] + " " + evolution['Species'][4], evolution['Movement'][4], evolution['Justification'][4], evolution['Cranial Capacity'][4], evolution['Origin']
-         [4], evolution['Dead'][4], evolution['Habitat'][4], evolution['Geographical Origin'][4], evolution['Fossils'][4], 50, 28, -15),
+         [4], evolution['Dead'][4], evolution['Habitat'][4], evolution['Geographical Origin'][4], evolution['Fossils'][4], 50, 38, -5, "extinct"),
         ('pan', evolution['Genus'][5] + " " + evolution['Species'][5], evolution['Movement'][5], evolution['Justification'][5], evolution['Cranial Capacity'][5], evolution['Origin']
-         [5], evolution['Dead'][5], evolution['Habitat'][5], evolution['Geographical Origin'][5], evolution['Fossils'][5], 50, 63, -70),
+         [5], evolution['Dead'][5], evolution['Habitat'][5], evolution['Geographical Origin'][5], evolution['Fossils'][5], 50, 63, -70, "extanct"),
         ('gorilla', evolution['Genus'][6] + " " + evolution['Species'][6], evolution['Movement'][6], evolution['Justification'][6], evolution['Cranial Capacity'][6], evolution['Origin']
-         [6], evolution['Dead'][6], evolution['Habitat'][6], evolution['Geographical Origin'][6], evolution['Fossils'][6], 50, 63, -90),
-        ('invisTop1', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 13, -20),        
-        ('invisTop2', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 23, -10),
-        ('invisTop3', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 33, 0),
-        ('invisTop4', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 43, 10),
-        ('invisTop5', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 53, 20),
-        ('invisBot1', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 38, -65)
+         [6], evolution['Dead'][6], evolution['Habitat'][6], evolution['Geographical Origin'][6], evolution['Fossils'][6], 50, 63, -90, "extanct"),
+        ('ardipith', evolution['Genus'][7] + " " + evolution['Species'][7], evolution['Movement'][7], evolution['Justification'][7], evolution['Cranial Capacity'][7], evolution['Origin']
+         [7], evolution['Dead'][7], evolution['Habitat'][7], evolution['Geographical Origin'][7], evolution['Fossils'][7], 50, 28, -15, "extinct"),
+        ('panthrop', evolution['Genus'][8] + " " + evolution['Species'][8], evolution['Movement'][8], evolution['Justification'][8], evolution['Cranial Capacity'][8], evolution['Origin']
+         [8], evolution['Dead'][8], evolution['Habitat'][8], evolution['Geographical Origin'][8], evolution['Fossils'][8], 50, 48, 5, "extinct"),
+        ('invisTop1', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 13, -20, "extinct"),        
+        ('invisTop2', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 23, -10, "extinct"),
+        ('invisTop3', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 33, 0, "extinct"),
+        ('invisTop4', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 43, 10, "extinct"),
+        ('invisTop5', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 53, 20, "extinct"),
+        ('invisTop6', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 63, 30, "extinct"),
+        ('invisTop7', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 73, 40, "extinct"),
+        ('invisBot1', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 38, -65, "extinct")
     )
 ]
 
@@ -71,13 +78,17 @@ edges = [
         ('invisTop2', 'invisTop3'),
         ('invisTop3', 'invisTop4'),
         ('invisTop4', 'invisTop5'),
+        ('invisTop5', 'invisTop6'),
+        ('invisTop6', 'invisTop7'),
         ('ancestor', 'invisBot1'),
-        ('invisTop2', 'afarensis'),
-        ('invisTop3', 'habillis'),
-        ('invisTop4', 'erect'),
-        ('invisTop5', 'neand'),
-        ('invisTop5', 'human'),
         ('invisTop1', 'pan'),
+        ('invisTop2', 'ardipith'),
+        ('invisTop3', 'afarensis'),
+        ('invisTop4', 'panthrop'),
+        ('invisTop5', 'habillis'),
+        ('invisTop6', 'erect'),
+        ('invisTop7', 'neand'),
+        ('invisTop7', 'human'),
         ('invisBot1', 'gorilla')
 
     )
@@ -96,6 +107,12 @@ default_stylesheet = [
             'font-size': '24',
             "text-valign": "center",
             "text-halign": "right"
+        }
+    },
+    {
+        'selector': '.extanct',
+        'style': {
+            'background-color': '#3A83C7'
         }
     },
     {
@@ -119,8 +136,8 @@ app.layout = html.Div(children=[
                 stylesheet=default_stylesheet,
                 autoungrabify=True,
                 autolock=True,
-                #maxZoom=1.5, 
-                #minZoom=1.0,
+                maxZoom=3, 
+                minZoom=0.43,
                 zoomingEnabled=True,
                 userZoomingEnabled=True,
                 style={'width': '100%', 'height': '100%'}
