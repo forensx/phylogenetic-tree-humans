@@ -179,7 +179,7 @@ app.layout = html.Div(children=[
                 ], style={
                     'grid-area': '1 / 5 / 2 / 7',
                     'display': 'grid',
-                    'grid-template-columns': 'repeat(4, 1fr)',
+                    'grid-template-columns': '40px 100px 40px 100px',
                     'grid-template-rows': '1fr',
                     'grid-column-gap': '1px',
                     'grid-row-gap': '0px',
@@ -204,7 +204,7 @@ app.layout = html.Div(children=[
                 autoungrabify=True,
                 autolock=True,
                 maxZoom=3,
-                minZoom=0.43,
+                minZoom=0.38,
                 zoomingEnabled=True,
                 userZoomingEnabled=True,
                 style={'width': '100%', 'height': '100%',
