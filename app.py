@@ -13,8 +13,9 @@ color_scheme = {
     'background-color': '#161616',  # set this in assets/style.css as well
     'edge-color': '#689775',
     'node-color': '#C7493A',
-    'header-color': '#A33327',
-    'sidebar-text-color': '#FFFFFF'
+    'header-color': '#C7493A',
+    'sidebar-text-color': '#FFFFFF',
+    'extant-color': '#3A83C7'
 }
 
 
@@ -35,12 +36,13 @@ styles = {
 
 nodes = [
     {
-        'data': {'id': commonName, 'label': label, 'mode': mode, 'justification': justification, 'cranialCapacity': cranialCapacity, 'origin': origin, 'dead': dead, 'habitat': habitat, 'geography': geography, 'fossil': fossil, 'size': size },
+        'data': {'id': commonName, 'label': label, 'mode': mode, 'justification': justification, 'cranialCapacity': cranialCapacity, 'origin': origin, 'dead': dead, 'habitat': habitat, 'geography': geography, 'fossil': fossil, 'size': size},
         'position': {'x': 15*lat, 'y': -15*long},
         'classes': classes
     }
     for commonName, label, mode, justification, cranialCapacity, origin, dead, habitat, geography, fossil, size, lat, long, classes in (
-        ('ancestor', 'Common Ancestor', '?', '?', '?', '?', '?', '?', '?', '?', 50, 3, -30, "extinct"),
+        ('ancestor', 'Common Ancestor', 'Unknown', 'Unknown', 'Unknown',
+         'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown', 50, 3, -30, "extinct"),
         ('human', evolution['Genus'][0] + " " + evolution['Species'][0], evolution['Movement'][0], evolution['Justification'][0], evolution['Cranial Capacity'][0], evolution['Origin']
          [0], evolution['Dead'][0], evolution['Habitat'][0], evolution['Geographical Origin'][0], evolution['Fossils'][0], 50, 83, 50, "extanct"),
         ('neand', evolution['Genus'][1] + " " + evolution['Species'][1], evolution['Movement'][1], evolution['Justification'][1], evolution['Cranial Capacity'][1], evolution['Origin']
@@ -59,14 +61,22 @@ nodes = [
          [7], evolution['Dead'][7], evolution['Habitat'][7], evolution['Geographical Origin'][7], evolution['Fossils'][7], 50, 28, -15, "extinct"),
         ('panthrop', evolution['Genus'][8] + " " + evolution['Species'][8], evolution['Movement'][8], evolution['Justification'][8], evolution['Cranial Capacity'][8], evolution['Origin']
          [8], evolution['Dead'][8], evolution['Habitat'][8], evolution['Geographical Origin'][8], evolution['Fossils'][8], 50, 48, 5, "extinct"),
-        ('invisTop1', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 13, -20, "extinct"),        
-        ('invisTop2', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 23, -10, "extinct"),
-        ('invisTop3', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 33, 0, "extinct"),
-        ('invisTop4', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 43, 10, "extinct"),
-        ('invisTop5', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 53, 20, "extinct"),
-        ('invisTop6', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 63, 30, "extinct"),
-        ('invisTop7', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 73, 40, "extinct"),
-        ('invisBot1', '', '?', '?', '?', '?', '?', '?', '?', '?', 1, 38, -65, "extinct")
+        ('invisTop1', '', '?', '?', '?', '?', '?',
+         '?', '?', '?', 1, 13, -20, "extinct"),
+        ('invisTop2', '', '?', '?', '?', '?', '?',
+         '?', '?', '?', 1, 23, -10, "extinct"),
+        ('invisTop3', '', '?', '?', '?', '?',
+         '?', '?', '?', '?', 1, 33, 0, "extinct"),
+        ('invisTop4', '', '?', '?', '?', '?', '?',
+         '?', '?', '?', 1, 43, 10, "extinct"),
+        ('invisTop5', '', '?', '?', '?', '?', '?',
+         '?', '?', '?', 1, 53, 20, "extinct"),
+        ('invisTop6', '', '?', '?', '?', '?', '?',
+         '?', '?', '?', 1, 63, 30, "extinct"),
+        ('invisTop7', '', '?', '?', '?', '?', '?',
+         '?', '?', '?', 1, 73, 40, "extinct"),
+        ('invisBot1', '', '?', '?', '?', '?', '?',
+         '?', '?', '?', 1, 38, -65, "extinct")
     )
 ]
 
@@ -129,6 +139,63 @@ app.layout = html.Div(children=[
     html.Div([  # START FLEX CONTAINER
         # START LEFT HALF
         html.Div([
+            html.Div([
+                html.Div([
+                    'Human Origins'
+                ], style={
+                    'grid-area': '1 / 1 / 2 / 5',
+                    'color': color_scheme['header-color'],
+                    'font-size': '1.8em',
+                    'font-weight': 'bold',
+                    'padding-left': '10%'
+                }),
+                html.Div([
+                    html.Div([
+                    ], style={
+                        'height': '25px',
+                        'width': '25px',
+                        'background-color': color_scheme['extant-color'],
+                        'border-radius': '50%',
+                        'display': 'inline-block'
+                    }),
+                    html.Div([
+                        'Extant'
+                    ], style={
+                        'color': color_scheme['sidebar-text-color']
+                    }),
+                    html.Div([
+                    ], style={
+                        'height': '25px',
+                        'width': '25px',
+                        'background-color': color_scheme['node-color'],
+                        'border-radius': '50%',
+                        'display': 'inline-block'
+                    }),
+                    html.Div([
+                        'Extinct'
+                    ], style={
+                        'color': color_scheme['sidebar-text-color']
+                    })
+                ], style={
+                    'grid-area': '1 / 5 / 2 / 7',
+                    'display': 'grid',
+                    'grid-template-columns': 'repeat(4, 1fr)',
+                    'grid-template-rows': '1fr',
+                    'grid-column-gap': '1px',
+                    'grid-row-gap': '0px',
+                    'align-items': 'center'
+                })
+            ],
+                style={
+                'box-shadow': '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                'grid-area': '1 / 1 / 2 / 2',
+                'display': 'grid',
+                'grid-template-columns': 'repeat(6, 1fr)',
+                'grid-template-rows': '1fr',
+                'grid-column-gap': '0px',
+                'grid-row-gap': '6px',
+                'align-items': 'center'
+            }),
             cyto.Cytoscape(
                 id='cytoscape-event-callbacks-2',
                 layout={'name': 'preset'},
@@ -136,78 +203,87 @@ app.layout = html.Div(children=[
                 stylesheet=default_stylesheet,
                 autoungrabify=True,
                 autolock=True,
-                maxZoom=3, 
+                maxZoom=3,
                 minZoom=0.43,
                 zoomingEnabled=True,
                 userZoomingEnabled=True,
-                style={'width': '100%', 'height': '100%'}
+                style={'width': '100%', 'height': '100%',
+                       'grid-area': '2 / 1 / 11 / 2'}
             )
         ], style={'margin': '0px',
                   'padding': '0px',
                   'grid-area': '1 / 1 / 2 / 3',
                   'box-shadow': '0px 4px 8px rgba(0, 0, 0, 0.25)',
-                  'background': '#2D2C2C'
+                  'background': '#2D2C2C',
+                  'display': 'grid',
+                  'grid-template-columns': '1fr',
+                  'grid-template-rows': 'repeat(10, 1fr)',
+                  'grid-column-gap': '0px',
+                  'grid-row-gap': '1px',
                   }),
         # START RIGHT HALF
         html.Div([
             html.Div([
                 html.Div(id='cytoscape-tapNodeGenus-output',
                          style={
-                             'font-size': '2em',
+                             'font-size': '1.7em',
                              'font-weight': 'bold',
                              'color': color_scheme['header-color']
                          }),
                 html.Div(id='cytoscape-tapNodeMode-output',
                          style={
-                             'font-size': '1.2em',
-                             'margin-top': '8%',
+                             'font-size': '1em',
+                             'margin-top': '5%',
                              'color': color_scheme['sidebar-text-color']
                          }),
                 html.Div(id='cytoscape-tapNodeJustification-output',
                          style={
-                             'font-size': '1em',
-                             'margin-top': '4%',
+                             'font-size': '0.9em',
+                             'margin-top': '3%',
                              'text-align': 'justify',
                              'color': color_scheme['sidebar-text-color']
                          }),
                 html.Div(id='cytoscape-tapNodeCranial-output',
                          style={
-                             'font-size': '1.2em',
-                             'margin-top': '8%',
+                             'font-size': '1em',
+                             'margin-top': '5%',
                              'color': color_scheme['sidebar-text-color']
                          }),
                 html.Div(id='cytoscape-tapNodeOrigin-output',
                          style={
-                             'font-size': '1.2em',
-                             'margin-top': '8%',
+                             'font-size': '1em',
+                             'margin-top': '5%',
                              'color': color_scheme['sidebar-text-color']
                          }),
                 html.Div(id='cytoscape-tapNodeDead-output',
                          style={
-                             'font-size': '1.2em',
-                             'margin-top': '8%',
+                             'font-size': '1em',
+                             'margin-top': '5%',
                              'color': color_scheme['sidebar-text-color']
                          }),
                 html.Div(id='cytoscape-tapNodeHabitat-output',
                          style={
-                             'font-size': '1.2em',
-                             'margin-top': '8%',
+                             'font-size': '1em',
+                             'margin-top': '5%',
                              'color': color_scheme['sidebar-text-color']
                          }),
                 html.Div(id='cytoscape-tapNodeGeography-output',
                          style={
-                             'font-size': '1.2em',
-                             'margin-top': '8%',
+                             'font-size': '1em',
+                             'margin-top': '5%',
                              'color': color_scheme['sidebar-text-color']
                          }),
                 html.Div(id='cytoscape-tapNodeFossil-output',
                          style={
-                             'font-size': '1.2em',
-                             'margin-top': '8%',
+                             'font-size': '1em',
+                             'margin-top': '5%',
                              'color': color_scheme['sidebar-text-color']
                          })
             ], style={
                 'padding': '50px',
+                'overflow-wrap': 'break-word',
+                'word-wrap': 'break-word',
+                'hyphens': 'auto'
             })
         ], style={
             'margin': '0px',
